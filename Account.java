@@ -1,0 +1,62 @@
+// Account class contains account relatade informations
+// abstract bcz every account supports withdrawal, but rules are differnt(Savings/Current)
+
+public abstract class Account {
+    
+    private int accountNumber;
+    private double balance;
+    private Customer customer;
+
+    // Constructors
+    public Account(int accountNumber, double balance, Customer customer) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.customer = customer;
+    }
+
+    // Getters
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    // Setters
+    protected void setBalance(double balance){
+        this.balance = balance;
+    }
+    
+
+    // Deposit method
+    public void deposit(double amount){
+        if(amount > 0){
+            balance += amount;
+            System.out.println(amount + "/-" + "deposited succesfully");
+        }
+        else{
+            System.out.println("Invalid deposit amount");
+        }
+    }
+
+    // Balance check
+    public void checkBalance(){
+        System.out.println("Current Balance: " + balance);
+    }
+
+    // Display Account Details
+    public void displayAccountDetails(){
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+        customer.displayCustomerDetails();
+    }
+
+    //Abstract method
+    public abstract void withdraw(double amount);
+    
+}
