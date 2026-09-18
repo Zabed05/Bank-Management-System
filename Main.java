@@ -77,23 +77,33 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Enter Account Number:");
+                    System.out.print("Enter Account Number: ");
                     accountNumber = sc.nextInt();
 
-                    System.out.println("Enter Amount:");
+                    System.out.print("Enter Amount: ");
                     double depositAmount = sc.nextDouble();
 
-                    bank.deposite(accountNumber, depositAmount);
+                    try {
+                        bank.deposit(accountNumber, depositAmount);
+                    } catch (InvalidAmountException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+
                     break;
 
                 case 4:
-                    System.out.println("Enter Account Number:");
+                    System.out.print("Enter Account Number: ");
                     accountNumber = sc.nextInt();
 
-                    System.out.println("Enter Amount:");
+                    System.out.print("Enter Amount: ");
                     double withdrawAmount = sc.nextDouble();
 
-                    bank.withdraw(accountNumber, withdrawAmount);
+                    try {
+                        bank.withdraw(accountNumber, withdrawAmount);
+                    } catch (InvalidAmountException | InsufficientBalanceException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+
                     break;
 
                 case 5:

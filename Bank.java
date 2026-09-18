@@ -34,7 +34,7 @@ public class Bank {
     }
 
     // Deposit
-    public void deposite(int accountNumber, double amount){
+    public void deposit(int accountNumber, double amount) throws InvalidAmountException {
         Account account = findAccount(accountNumber);
 
         if(account != null){
@@ -46,7 +46,7 @@ public class Bank {
     }
 
     // Withdraw
-    public void withdraw(int accountNumber, double amount){
+    public void withdraw(int accountNumber, double amount)  throws InvalidAmountException, InsufficientBalanceException{
         Account account = findAccount(accountNumber);
 
         if(account != null){

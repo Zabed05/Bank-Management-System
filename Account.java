@@ -34,29 +34,33 @@ public abstract class Account {
     
 
     // Deposit method
-    public void deposit(double amount){
-        if(amount > 0){
-            balance += amount;
-            System.out.println(amount + "/-" + "deposited succesfully");
+    public void deposit(double amount) throws InvalidAmountException {
+        if (amount <= 0){
+            throw new InvalidAmountException(
+                "Deposit amount must be greater than 0."
+            );
         }
-        else{
-            System.out.println("Invalid deposit amount");
-        }
+
+        balance += amount;
+
+        System.out.println("₹" + amount + " deposited successfully.");
+        System.out.println("New Balance: ₹" + balance);
     }
 
     // Balance check
     public void checkBalance(){
-        System.out.println("Current Balance: " + balance);
+        System.out.println("Current Balance: ₹" + balance);
     }
 
     // Display Account Details
     public void displayAccountDetails(){
         System.out.println("Account Number: " + accountNumber);
-        System.out.println("Balance: " + balance);
+        System.out.println("Balance: ₹" + balance);
         customer.displayCustomerDetails();
     }
 
     //Abstract method
-    public abstract void withdraw(double amount);
+    public abstract void withdraw(double amount)
+        throws InvalidAmountException, InsufficientBalanceException;
     
 }

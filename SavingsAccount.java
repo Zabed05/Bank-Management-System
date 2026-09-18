@@ -9,18 +9,23 @@ public class SavingsAccount extends Account{
     
     // Overriding withdraw()
     @Override
-    public void withdraw(double amount){
-        if(amount <= 0){
-            System.out.println("Invalid amount");
-            return;
+    public void withdraw(double amount)
+            throws InvalidAmountException, InsufficientBalanceException {
+
+        if (amount <= 0){
+            throw new InvalidAmountException(
+                "Withdrawal amount must be greater than 0."
+            );
         }
 
-        if(getBalance() - amount >= MIN_BALANCE){
-            setBalance(getBalance() - amount);
-            System.out.println(amount + "/- withdrawn successfully");
+        if (getBalance() - amount < MIN_BALANCE){
+            throw new InsufficientBalanceException(
+                "Minimum balance of ₹500 must be maintained."
+            );
         }
-        else{
-            System.out.println("withdrawal failed! Minimum balance is 500/-");
-        }
+
+        setBalance(getBalance() - amount);
+
+        System.out.println("₹" + amount + " withdrawn successfully.");
     }
 }
