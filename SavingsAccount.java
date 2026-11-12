@@ -1,3 +1,6 @@
+import exception.InsufficientBalanceException;
+import exception.InvalidAmountException;
+
 public class SavingsAccount extends Account{
 
     private static final double MIN_BALANCE = 500;

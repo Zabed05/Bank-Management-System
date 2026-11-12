@@ -1,3 +1,6 @@
+import exception.InsufficientBalanceException;
+import exception.InvalidAmountException;
+
 public class CurrentAccount extends Account{
 
     private static final double LIMIT = 10000;
@@ -7,18 +10,18 @@ public class CurrentAccount extends Account{
     }
 
     @Override
-    public void withdraw(double amount){
+    public void withdraw(double amount)
+            throws InvalidAmountException, InsufficientBalanceException {
+                
         if(amount <= 0){
-            System.out.println("Invalid amount");
-            return;
+            throw new InvalidAmountException("Withdrawal amount must be greater than 0.");
         }
 
-        if(getBalance() + LIMIT >= amount){
-            setBalance(getBalance() - amount);
-            System.out.println(amount + "/- withdrawn successfull");
+        if(getBalance() - amount < -LIMIT){
+            throw new InsufficientBalanceException("Overdraft limit exceed");
         }
-        else{
-            System.out.println("Withdrawal faild! Limit Exceed");
-        }
+
+        setBalance(getBalance() - amount);
+        System.out.println(amount + "/- withdrawn successfully");
     }
 }
