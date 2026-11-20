@@ -28,7 +28,8 @@ public class SavingsAccount extends Account{
         }
 
         setBalance(getBalance() - amount);
-
-        System.out.println("₹" + amount + " withdrawn successfully.");
+        addTransaction("WITHDRAW", amount);
+        
+        System.out.println(amount + "/- withdrawn successfully.");
     }
 }

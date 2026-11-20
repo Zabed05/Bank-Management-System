@@ -21,7 +21,8 @@ public class Main {
             System.out.println("6.Display specific account");
             System.out.println("7.Display all accounts");
             System.out.println("8.Delete Account");
-            System.out.println("9.Exit");
+            System.out.println("9.View Transaction History");
+            System.out.println("10.Exit");
 
             System.out.println("Enter Your Choice:");
             int choice = sc.nextInt();
@@ -76,7 +77,7 @@ public class Main {
 
                     bank.createAccount(account);
 
-                    System.out.println("Your Account NUmber: " + accountNumber);
+                    System.out.println("Your Account Number: " + accountNumber);
                     break;
 
                 case 3:
@@ -133,8 +134,15 @@ public class Main {
 
                     bank.deleteAccount(accountNumber);
                     break;
-
+                
                 case 9:
+                    System.out.println("Enter Account Number:");
+                    accountNumber = sc.nextInt();
+
+                    bank.showTransactionHistory(accountNumber);
+                    break;
+
+                case 10:
                     System.out.println("Thank You!");
                     sc.close();
                     return;

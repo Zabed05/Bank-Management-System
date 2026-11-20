@@ -106,4 +106,14 @@ public class Bank {
             System.out.println("Account not found!");
         }
     }
+
+    // Transaction History
+    public void showTransactionHistory(int accountNumber){
+        Account account = findAccount(accountNumber);
+        if(account == null){
+            System.out.println("Account not found");
+            return;
+        }
+        account.showTransactionHistory();
+    }
 }

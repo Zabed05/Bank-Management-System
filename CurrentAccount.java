@@ -22,6 +22,8 @@ public class CurrentAccount extends Account{
         }
 
         setBalance(getBalance() - amount);
+        addTransaction("WITHDRAW", amount);
+        
         System.out.println(amount + "/- withdrawn successfully");
     }
 }
