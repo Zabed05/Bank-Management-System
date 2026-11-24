@@ -23,7 +23,7 @@ public class SavingsAccount extends Account{
 
         if (getBalance() - amount < MIN_BALANCE){
             throw new InsufficientBalanceException(
-                "Minimum balance of ₹500 must be maintained."
+                "Minimum balance of 500 must be maintained."
             );
         }
 

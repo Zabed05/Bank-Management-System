@@ -57,7 +57,7 @@ public class Main {
                     int accountNumber = bank.generateAccountNumber();
 
                     System.out.println("Enter Initial Balance:");
-                    double balnce = sc.nextDouble();
+                    double balance = sc.nextDouble();
 
                     Customer customer = new Customer(
                         customerId,
@@ -70,10 +70,10 @@ public class Main {
 
                     Account account;
                     if(choice == 1){
-                        account = new SavingsAccount(accountNumber, balnce, customer);
+                        account = new SavingsAccount(accountNumber, balance, customer);
                     }
                     else{
-                        account = new CurrentAccount(accountNumber, balnce, customer);
+                        account = new CurrentAccount(accountNumber, balance, customer);
                     }
 
                     bank.createAccount(account);
