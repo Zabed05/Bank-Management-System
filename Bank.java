@@ -116,4 +116,36 @@ public class Bank {
         }
         account.showTransactionHistory();
     }
+
+    // Transfer Money
+    public void transferMoney(int senderAcc, int receverAcc, double amount){
+        Account sender = findAccount(senderAcc);
+        Account recever = findAccount(receverAcc);
+
+        // validation check
+        if(sender == null){
+            System.out.println("Sender Account not found!");
+            return;
+        }
+        if(recever == null){
+            System.out.println("Recever account not found!");
+            return;
+        }
+
+        // prevent self transfer
+        if(sender == recever){
+            System.out.println("Money transfer cannot procced in same account");
+            return;
+        }
+
+        try{
+            sender.withdraw(amount);
+            recever.deposit(amount);
+
+            System.out.println("Money transferred successfully!");
+        }
+        catch(InvalidAmountException | InsufficientBalanceException e){
+            System.out.println("Transfer failed:" + e.getMessage());
+        }
+    }
 }

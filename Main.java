@@ -22,7 +22,8 @@ public class Main {
             System.out.println("7.Display all accounts");
             System.out.println("8.Delete Account");
             System.out.println("9.View Transaction History");
-            System.out.println("10.Exit");
+            System.out.println("10.Transfer Money");
+            System.out.println("11.Exit");
 
             System.out.println("Enter Your Choice:");
             int choice = sc.nextInt();
@@ -141,8 +142,21 @@ public class Main {
 
                     bank.showTransactionHistory(accountNumber);
                     break;
-
+                
                 case 10:
+                    System.out.println("Enter Sender account number:");
+                    int senderAcc = sc.nextInt();
+                    
+                    System.out.println("Enter Recever account number:");
+                    int receverAcc = sc.nextInt();
+
+                    System.out.println("Enter transfer amount:");
+                    double amount = sc.nextDouble();
+
+                    bank.transferMoney(senderAcc, receverAcc, amount);
+                    break;
+
+                case 11:
                     System.out.println("Thank You!");
                     sc.close();
                     return;
